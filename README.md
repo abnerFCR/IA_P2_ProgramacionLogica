@@ -382,3 +382,7 @@ La regla consta de las siguientes instrucciones:
 es_primo(Var1,Var2):- es_hijo(Var1,Var3), es_tio(Var3,Var2).
 ```
 Esta regla encuentra si es hijo de una tercera persona que se asume como tio y que ademas esta persona es tio de la otra persona, si se cumplen las dos condiciones entonces son primos.
+
+### Arbol Genealogico Problema 2
+
+![image](https://user-images.githubusercontent.com/37676214/122508460-4481ea00-cfbf-11eb-9cd8-75ac8ae22978.png)
