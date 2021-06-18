@@ -94,6 +94,34 @@ Para poder saber si una persona cumple alguno de estos hechos podemos utilizar v
 
 ### Reglas
 
+Las reglas son condiciones que se tienen que cumplir en base a los hechos que se han presentado.  Estas condiciones se establecen con el fin de encontrar solucion al problema planteado. 
 
+Entre las reglas planteadas para resolver este problema tenemos:
+
+1. es_primo
+2. es_tio
+3. es_abuelo
+4. tiene_hermana
+5. es_culpable
+6. hallar_culpable
+
+#### Es Primo
+
+Esta regla se encarga de saber si una persona es primo/a de otra persona. Esta regla recibe 2 parametros los cuales son las 2 personas de las que se quiere saber si son primos, la estructura de la regla es la siguiete:
+
+```sh
+es_primo(Persona1, Persona2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_primo(Persona1,Persona2):-(padre(Persona3,Persona1),padre(Persona4,Persona2),hermano(Persona3,Persona4));
+                             (padre(Persona3,Persona1),madre(Persona4,Persona2),hermano(Persona3,Persona4));
+                             (madre(Persona3,Persona1),padre(Persona4,Persona2),hermana(Persona3,Persona4));
+                             (madre(Persona3,Persona1),madre(Persona4,Persona2),hermana(Persona3,Persona4)).
+```
+Esta regla encuentra el padre o madre (Persona 3) de la persona 1 y compara si este es hermano o hermana de persona 2 (Persona 4).
 
 ## Problema #2
