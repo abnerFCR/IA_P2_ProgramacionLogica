@@ -1,7 +1,7 @@
 %Hechos
-%Hijo(Persona1,Persona2)     indica que Persona 1 es hijo de la persona 2
-%Padre(Persona1,Persona2)    indica que Persona 1 es padre de la persona 2
-%Madre(Persona1,Persona2)    indica que Persona 1 es madre de la persona 2
+%Hijo(Persona1,Persona2)     indica que Persona 1 es hijo de la persona 2   
+%Padre(Persona1,Persona2)    indica que Persona 1 es padre de la persona 2  
+%Madre(Persona1,Persona2)    indica que Persona 1 es madre de la persona 2  
 %Pareja(Persona1,Persona2)   indica que Persona 1 es pareja d e la persona 2
 %Hermano(Persona1,Persona2)  indica que Persona 1 es hermano de la persona 2
 %Hermana(Persona1,Persona2)  indica que Persona 1 es hermana de la persona 2
@@ -146,7 +146,7 @@ hijo(sergio,enrique).
 es_primo(Persona1,Persona2):-(padre(Persona3,Persona1),padre(Persona4,Persona2),hermano(Persona3,Persona4));
                              (padre(Persona3,Persona1),madre(Persona4,Persona2),hermano(Persona3,Persona4));
                              (madre(Persona3,Persona1),padre(Persona4,Persona2),hermana(Persona3,Persona4));
-                             (madre(Persona3,Persona1),madre(Persona4,Persona2),hermana(Persona3,Persona4)).
+                             (madre(Persona3,PersonSa1),madre(Persona4,Persona2),hermana(Persona3,Persona4)).
 
 %REGLA PARA SABER SI ES TIO O TIA 
 es_tio(Persona1,Persona2):-(hermano(Persona1,Persona3),padre(Persona3,Persona2));
@@ -190,4 +190,16 @@ arbol():-nl,write('*************************************************************
 
 %bruce y martha si deducimos los datos que no estan
 %[may y ben (lois y clark)],  [diana y peter hijos(mary y harry)],  [barry y pepper (tony, lara)], [rachel, enrique (enzio, lorenzo y sergio)] 
+
+/*
+|Hecho                     |Accion                                         |
+| ------------------------ | --------------------------------------------- |
+|Hijo(Persona1,Persona2)   |indica que Persona 1 es hijo de la persona 2   |
+|Padre(Persona1,Persona2)  |indica que Persona 1 es padre de la persona 2  |
+|Madre(Persona1,Persona2)  |indica que Persona 1 es madre de la persona 2  |
+|Pareja(Persona1,Persona2) |indica que Persona 1 es pareja d e la persona 2|
+|Hermano(Persona1,Persona2)|indica que Persona 1 es hermano de la persona 2|
+|Hermana(Persona1,Persona2)|indica que Persona 1 es hermana de la persona 2|
+
+*/
 
