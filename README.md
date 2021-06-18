@@ -81,6 +81,15 @@ En estos hechos indicamos que May y Diana son hijas de Martha.
 Para poder saber si una persona cumple alguno de estos hechos podemos utilizar variables las cuales nos indicaran si se cumple o no con un hecho en especifico.
 
 
+|Hecho                     |Accion                                         |
+| ------------------------ | --------------------------------------------- |
+|Hijo(Persona1,Persona2)   |indica que Persona 1 es hijo de la persona 2   |
+|Padre(Persona1,Persona2)  |indica que Persona 1 es padre de la persona 2  |
+|Madre(Persona1,Persona2)  |indica que Persona 1 es madre de la persona 2  |
+|Pareja(Persona1,Persona2) |indica que Persona 1 es pareja d e la persona 2|
+|Hermano(Persona1,Persona2)|indica que Persona 1 es hermano de la persona 2|
+|Hermana(Persona1,Persona2)|indica que Persona 1 es hermana de la persona 2|
+
 
 
 ### Reglas
