@@ -178,6 +178,51 @@ tiene_hermana(Persona1):-hermana(Persona2,Persona1).
 ```
 Esta regla encarga de verificar si hay alguna hermana (Persona 2) de la persona 1. 
 
+#### 5. Es culpable
+
+Esta regla se encarga de saber si una persona es culpable o no. Esta regla recibe 1 parametro el cual es el nombre de la persona de la que se desea conocer la informacion, la estructura de la regla es la siguiete:
+
+```sh
+es_culpable(Persona1).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_culpable(Persona1):-es_abuelo(bruce,Persona1),es_primo(clark,Persona1),es_tio(barry,Persona1),tiene_hermana(Persona1),
+                      nl,write('-----------------------------'),nl,write('El culpable es: '+ Persona1),nl,write('-----------------------------').
+```
+Esta regla encarga de verificar si la persona 1 es culpable, preguntando los parametros dados en el enunciado del problema, eso quiere decir que es culpable si tiene un abuelo llamado bruce, si tiene un primo llamado clark, si tiene un tio llamado barry y si tiene alguna hermana.
+
+
+#### 6. Hallar culpable
+
+Esta regla se encarga de encontrar al culpable. Esta regla no recibe parametros, la estructura de la regla es la siguiete:
+
+```sh
+hallar_culpable().
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+hallar_culpable():-es_culpable(Persona1).
+```
+Esta regla devuelve el nombre del culpable basandose en los criterios establecidos en la regla es_culpable, imprimiendo al final el nombre del culpable
+
+#### 7. Arbol genealogico
+
+Esta regla se encarga de imprimir en pantalla el arbol genealogico de la familia obtenido en base a los hechos brindados. 
+
+```sh
+arbol().
+```
+El arbol genealogico es el siguiente:
+
+![image](https://user-images.githubusercontent.com/37676214/122507666-d688f300-cfbd-11eb-96c4-5760fd354c3f.png)
+
 
 ## Problema #2
 
