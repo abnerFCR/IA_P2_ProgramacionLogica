@@ -180,3 +180,160 @@ Esta regla encarga de verificar si hay alguna hermana (Persona 2) de la persona 
 
 
 ## Problema #2
+
+### Hechos
+
+Los hechos son situaciones que estan planteadas desde un inicio en el problema o para en el caso del problema 2 habia que deducirlos para poder construir el arbol genealogico, entre los cuales podemos encontrar:
+
+1. Pareja
+2. Hermano
+3. Padre
+4. Madre
+5. Hijo
+
+#### 1. Pareja
+
+El hecho pareja indica las distintas parejas que estan planteadas en el problema, como por ejemplo:
+
+```sh
+es_pareja(lamar,ana_lucia).
+```
+
+En las instrucciones anteriores se indica que lama es pareja de ana_lucia.
+
+#### 2. Hermano
+
+El hecho hermano indica que la una persona es hermano de otra, por ejemplo:
+
+```sh
+es_hermano(pedro,ruth).
+```
+En estos hechos indicamos que pedro es hermano de ruth. 
+
+#### 3. Padre
+
+El hecho Padre indica que la una persona es el Padre de otra, por ejemplo:
+
+```sh
+es_padre(lamar,pedro).
+```
+En estos hechos indicamos que lamar es padre de pedro. 
+
+#### 4. Madre
+
+El hecho Madre indica que la una persona es la Madre de otra, por ejemplo:
+
+```sh
+es_madre(ana_lucia,pedro).
+```
+En estos hechos indicamos que ana_lucia es madre de pedro.
+
+
+#### 5. Hijo
+
+El hecho Hijo indica que una persona es Hijo de otra persona, por ejemplo:
+
+```sh
+es_hijo(pedro,ana_lucia).
+```
+En estos hechos indicamos que pedro es hijo de ana_lucia.
+
+#### Reglas Estandar con parametros
+
+Para poder saber si una persona cumple alguno de estos hechos podemos utilizar variables las cuales nos indicaran si se cumple o no con un hecho en especifico.
+
+
+|Hecho                        |Accion                                         |
+| ------------------------    | --------------------------------------------- |
+|es_hijo(Persona1,Persona2)   |indica que Persona 1 es hijo de la persona 2   |
+|es_padre(Persona1,Persona2)  |indica que Persona 1 es padre de la persona 2  |
+|es_madre(Persona1,Persona2)  |indica que Persona 1 es madre de la persona 2  |
+|es_pareja(Persona1,Persona2) |indica que Persona 1 es pareja d e la persona 2|
+|es_hermano(Persona1,Persona2)|indica que Persona 1 es hermano de la persona 2|
+
+
+### Reglas
+
+Las reglas son condiciones que se tienen que cumplir en base a los hechos que se han presentado.  Estas condiciones se establecen con el fin de corroborar los hechos analizado que generaron el arbol genealogico. 
+
+Entre las reglas planteadas para resolver este problema tenemos:
+1. es_cuniado
+2. es_abuelo
+3. es_abuela
+4. es_tio
+4. es_primo
+
+#### Es cuniado
+
+Esta regla se encarga de saber si una persona es cuñado/a de otra persona, la regla recibe 2 parametros:
+```sh
+es_cuniado(Var1,Var2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_cuniado(Var1,Var2):-(es_hermano(Var1,Var3);es_hermano(Var3,Var1)),(es_pareja(Var3,Var2);es_pareja(Var2,Var3)).
+```
+Esta regla encuentra si es hermano con alguna otra persona y que esta persona sea pareaja de alguno de los hermanos.
+
+#### Es abuelo
+
+Esta regla se encarga de saber si una persona es abuelo de otra persona, la regla recibe 2 parametros:
+```sh
+es_abuelo(Var1,Var2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_abuelo(Var1,Var2):-es_padre(Var1,Var3),(es_padre(Var3,Var2);es_madre(Var3,Var2)).
+```
+Esta regla encuentra si es padre, ya sea de la madre o del padre de la otra persona.
+
+#### Es abuela
+
+Esta regla se encarga de saber si una persona es abuela de otra persona, la regla recibe 2 parametros:
+```sh
+es_abuela(Var1,Var2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_abuela(Var1,Var2):-es_madre(Var1,Var3),(es_padre(Var3,Var2);es_madre(Var3,Var2)).
+```
+Esta regla encuentra si es madre, ya sea de la madre o del padre de la otra persona.
+
+#### Es tio
+
+Esta regla se encarga de saber si una persona es tio/a de otra persona, la regla recibe 2 parametros:
+```sh
+es_tio(Var1,Var2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_tio(Var1,Var2):-(es_hermano(Var1,Var3);es_hermano(Var3,Var1);es_cuniado(Var3,Var1)),(es_padre(Var3,Var2);es_madre(Var3,Var2)).
+```
+Esta regla encuentra si es hermano o cuñado de la persona que se asume como tio, y que ademas si la persona que resulta ser cuñado o hermano es padre o madre de la persona que se considera como sobrino.
+
+#### Es primo
+
+Esta regla se encarga de saber si una persona es primo/a de otra persona, la regla recibe 2 parametros:
+```sh
+es_primo(Var1,Var2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_primo(Var1,Var2):- es_hijo(Var1,Var3), es_tio(Var3,Var2).
+```
+Esta regla encuentra si es hijo de una tercera persona que se asume como tio y que ademas esta persona es tio de la otra persona, si se cumplen las dos condiciones entonces son primos.
