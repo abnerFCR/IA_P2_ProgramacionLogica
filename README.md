@@ -104,8 +104,9 @@ Entre las reglas planteadas para resolver este problema tenemos:
 4. tiene_hermana
 5. es_culpable
 6. hallar_culpable
+7. Arbol genealogico 
 
-#### Es Primo
+#### 1. Es Primo
 
 Esta regla se encarga de saber si una persona es primo/a de otra persona. Esta regla recibe 2 parametros los cuales son las 2 personas de las que se quiere saber si son primos, la estructura de la regla es la siguiete:
 
@@ -123,5 +124,59 @@ es_primo(Persona1,Persona2):-(padre(Persona3,Persona1),padre(Persona4,Persona2),
                              (madre(Persona3,Persona1),madre(Persona4,Persona2),hermana(Persona3,Persona4)).
 ```
 Esta regla encuentra el padre o madre (Persona 3) de la persona 1 y compara si este es hermano o hermana de persona 2 (Persona 4).
+
+#### 2. Es Tio
+
+Esta regla se encarga de saber si una persona es tio/a de otra persona. Esta regla recibe 2 parametros los cuales son las 2 personas de las que se quiere saber si son una es tio/a de la otra, la estructura de la regla es la siguiete:
+
+```sh
+es_tio(Persona1, Persona2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_tio(Persona1,Persona2):-(hermano(Persona1,Persona3),padre(Persona3,Persona2));
+                           (hermano(Persona1,Persona3),madre(Persona3,Persona2));
+                           (hermana(Persona1,Persona3),padre(Persona3,Persona2));
+                           (hermana(Persona1,Persona3),madre(Persona3,Persona2)).
+```
+Esta regla encarga de verificar si la persona 1 es hermano/a del padre o madre(Persona 3) de la persona 2.
+
+
+#### 3. Es Abuelo
+
+Esta regla se encarga de saber si una persona es abuelo de otra persona. Esta regla recibe 2 parametros los cuales son las 2 personas de las que se desea conocer la informacion, la estructura de la regla es la siguiete:
+
+```sh
+es_abuelo(Persona1, Persona2).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+es_abuelo(Persona1,Persona2):-(padre(Persona1,Persona3),madre(Persona3,Persona2));
+                              (padre(Persona1,Persona3),padre(Persona3,Persona2)).
+```
+Esta regla encarga de verificar si la persona 1 es padre del padre o madre (Persona 3) de la persona 2. 
+
+#### 4. Tiene hermana
+
+Esta regla se encarga de saber si una persona tiene o no alguna hermana. Esta regla recibe 1 parametro el cual es el nombre de la persona de la que se desea conocer la informacion, la estructura de la regla es la siguiete:
+
+```sh
+tiene_hermana(Persona1).
+```
+
+La regla consta de las siguientes instrucciones:
+
+
+```sh
+tiene_hermana(Persona1):-hermana(Persona2,Persona1).
+```
+Esta regla encarga de verificar si hay alguna hermana (Persona 2) de la persona 1. 
+
 
 ## Problema #2
